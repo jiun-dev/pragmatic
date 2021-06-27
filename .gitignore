@@ -82,3 +82,5 @@ db.sqlite3
 /.idea
 
 secrets.json
+
+__pycache__/
