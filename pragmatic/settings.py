@@ -16,6 +16,8 @@ import os,json
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'accountapp',
 ]
 
@@ -144,3 +147,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = reverse_lazy('accountapp:login:hello_world')
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login:login')
+
+# 해당 경로로 접속해야 해당 파일을 볼수 있다.
+MEDIA_URL = '/media/'
+
+# 서버에 올렸을때 어느 경로로 지정이 될 것인지.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
