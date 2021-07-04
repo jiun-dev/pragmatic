@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN gh repo clone jiun-dev/pragmatic
+RUN git clone https://github.com/jiun-dev/pragmatic.git
 
 WORKDIR /home/pragmatic
 
