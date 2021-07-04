@@ -12,8 +12,8 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
-RUN pip install mysqlclient
+RUN echo "SECRET_KEY=django-insecure-%-)s9cdodhf%ct)zt65ayscku(gcmp57(y^s9-3#71%2773qx@" > .env
 
 EXPOSE 8000
 
-CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=pragmatic.settings.deploy && python manage.py migrate --settings=pragmatic.settings.deploy && gunicorn pragmatic.wsgi --env DJANGO_SETTINGS_MODULE=pragmatic.settings.deploy --bind 0.0.0.0:8000"]
+CMD ["gunicorn", "pragmatic.wsgi", "--bind", "0.0.0.0:8000"]
